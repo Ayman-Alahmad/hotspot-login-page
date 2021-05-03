@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <body class="bg-light">
+        <article>
+            <%- include('./partials/logo-header.ejs') %>
+                <main class="maxWidth-container">
+                    <section class="m-t-48">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8 text-center">
+
+                                    <!-- Heading -->
+                                    <h2>
+                                        Let’s find you an <span class="text-primary">hotspot</span>.
+                                    </h2>
+
+
+                                </div>
+                            </div> <!-- / .row -->
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <!-- Form -->
+                                    <form class="m-t-20">
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-6">
+
+                                                <div class="form-group mb-5 mb-md-0">
+
+                                                    <!-- Label -->
+                                                    <label for="applyTeam">Category</label>
+
+                                                    <!-- Select -->
+                                                    <select id="applyTeam" class="custom-select">
+                                                        <option selected="">All categories</option>
+                                                        <option>Coffee Shop</option>
+                                                        <option>Restaurant</option>
+                                                        <option>Hotel</option>
+                                                        <option>Mall</option>
+                                                    </select>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group mb-0">
+                                                    <!-- Label -->
+                                                    <label for="applyLocation">Location</label>
+                                                    <!-- Select -->
+                                                    <select id="applyLocation" class="custom-select">
+                                                        <option selected="">All locations</option>
+                                                        <option>Damascus</option>
+                                                        <option>Aleppo</option>
+                                                        <option>Homs</option>
+                                                        <option>Latakia</option>
+                                                        <option>Tartus</option>
+                                                    </select>
+
+                                                </div>
+
+                                            </div>
+                                        </div> <!-- / .row -->
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="m-t-48">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <% posList.forEach(pos=>{ %>
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <%= pos.name %>
+                                                        </td>
+
+                                                        <td>
+                                                            <%= pos.city %>
+                                                        </td>
+
+                                                        <td>
+                                                            <%= pos.address %>
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+                                                    <% }) %>
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+                </main>
+
+                <%- include('./partials/footer.ejs') %>
+
+        </article>
+
+
+
+
+    </body>
+
+</html>
