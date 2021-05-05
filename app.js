@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/assets', express.static('assets'))
 
 app.get('/', (req, res) => {
-    res.render('direct/index')
+    res.redirect('http://home.hotspot.sy/login')
 })
 
 app.get('/find', (req, res) => {
