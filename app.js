@@ -82,6 +82,13 @@ app.post('/status', (req, res) => {
     res.render('status', { varibles })
 })
 
+app.get('/status', (req, res) => {
+    res.redirect('http://home.hotspot.sy/status')
+})
+app.get('/login', (req, res) => {
+    res.redirect('http://home.hotspot.sy/login')
+})
+
 app.use((req, res) => {
     res.render('404')
 })
