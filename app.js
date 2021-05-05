@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
     res.redirect('http://home.hotspot.sy/login')
 })
 
+app.get('/home', (req, res) => {
+    res.render('direct/index')
+})
+
 app.get('/find', (req, res) => {
     res.render('find-a-hotspot', { posList: data.posList })
 })
