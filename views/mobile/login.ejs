@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+
+  <body>
+    <section class="section-border border-primary">
+      <div class="container d-flex flex-column">
+        <div class="row align-items-center justify-content-center no-gutters min-vh-100">
+          <div class="col-8 col-md-6 col-lg-7 offset-md-1 order-md-2 mt-auto mt-md-0 pt-8 pb-4 py-md-11">
+
+            <!-- Image -->
+            <img src="/assets/images/illustration-2.png" alt="..." class="img-fluid">
+
+          </div>
+          <div class="col-12 col-md-5 col-lg-4 order-md-1 mb-auto mb-md-0 pb-8 py-md-11">
+
+            <!-- Heading -->
+            <h1 class="sign-in-text">
+              Sign in
+            </h1>
+
+            <!-- Text -->
+            <p class="mb-32 text-center text-muted">
+              Remote Work is the Future, but Should You Go Remote?.
+            </p>
+
+            <%if (error) { %>
+              <div class="m-b-20 m-t-20  alert danger">
+                  <%= error%>
+              </div>
+              <% } %>
+
+                  <%if (varibles.error) { %>
+                      <div class="m-b-20 m-t-20  alert danger">
+                          <%= varibles.error%>
+                      </div>
+                      <% } %>
+
+                <!-- Form -->
+                <form class="mb-6" action="code" method="POST" name="sendin">
+
+                  <input type="hidden" name="dst" value="<%= varibles.linkorig %>" />
+                  <input type="hidden" name="popup" value="true" />
+                  <!-- Email -->
+                  <div class="form-group">
+                    <label for="mobile">
+                      Mobile
+                    </label>
+                    <input type="tel" tabindex="0" name="mobile" class="form-control code-input " id="mobile"
+                      value="+963 9" placeholder="+963 9xx xxx xxx" pattern="^\+963 9[3-6-8-9]\d \d{3} \d{3}$">
+                  </div>
+
+                  <!-- Submit -->
+                  <button class="btn primary full-width" type="submit">
+                    Next
+                  </button>
+                </form>
+                <!-- Text -->
+
+                <form action="login/account" method="POST" name="account">
+
+                  <input type="hidden" name="mac" value="<%= varibles.mac %>">
+                  <input type="hidden" name="ip" value="<%= varibles.ip %>">
+                  <input type="hidden" name="username" value="<%= varibles.username %>">
+                  <input type="hidden" name="link-login" value="<%= varibles.linkorig %>">
+                  <input type="hidden" name="link-orig" value="<%= varibles.linkorig %>">
+                  <input type="hidden" name="error" value="<%= varibles.error %>">
+                  <input type="hidden" name="trial" value="<%= varibles.trial %>">
+                  <input type="hidden" name="chap-id" value="<%= varibles.chapid %>">
+                  <input type="hidden" name="chap-challenge" value="<%= varibles.chapchallenge %>">
+                  <input type="hidden" name="link-login-only" value="<%= varibles.linkloginonly %>">
+                  <input type="hidden" name="link-orig-esc" value="<%= varibles.linkorigesc %>">
+                  <input type="hidden" name="mac-esc" value="<%= varibles.macesc %>">
+                  <input type="hidden" name="identity" value="<%= varibles.identity %>">
+                  <input type="hidden" name="bytes-in-nice" value="<%= varibles.bytesinnice %>">
+                  <input type="hidden" name="bytes-out-nice" value="<%= varibles.bytesoutnice %>">
+                  <input type="hidden" name="session-time-left" value="<%= varibles.sessiontimeleft %>">
+                  <input type="hidden" name="uptime" value="<%= varibles.uptime %>">
+                  <input type="hidden" name="refresh-timeout" value="<%= varibles.refreshtimeout %>">
+                  <input type="hidden" name="link-status" value="<%= varibles.linkstatus %>">
+                  <input type="hidden" name="server-address" value="<%= varibles.server_address %>">
+                  <input type="hidden" name="server-name" value="<%= varibles.server_name %>">
+                  <p class="m-t-20 text-center">
+                    Already have an account? <a onclick="haveAccount()">Login</a>.
+                  </p>
+
+                </form>
+
+
+
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+
+
+
+    <script src="/assets/js/imask.js"></script>
+    <script>
+      const mobileInput = document.getElementById('mobile')
+      mobileInput.addEventListener('focus', () => {
+        mobileInput.classList.add('touched')
+      })
+
+      var phoneMask = IMask(
+        mobileInput, {
+        mask: '{+963} 900 000 000'
+      });
+
+
+       function haveAccount() {
+        document.account.submit()
+       } 
+
+
+
+
+    </script>
+  </body>
+
+</html>

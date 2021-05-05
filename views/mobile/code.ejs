@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+
+    <body>
+        <div class="container d-flex flex-column">
+            <div class="row align-items-center justify-content-center no-gutters min-vh-100">
+                <div class="col-12 col-md-5 col-lg-4 py-8 py-md-11">
+
+                    <!-- Heading -->
+                    <h1 class="verify-code-text text-center">
+                        Verify <%= mobile%>
+                    </h1>
+
+                    <!-- Text -->
+                    <p class="mb-32 text-center text-muted">
+                        Enter 6-digit code
+                    </p>
+
+                    <%if (error) { %>
+                        <div class="m-b-20 m-t-20  alert danger">
+                            <%= error%>
+                        </div>
+                        <% } %>
+
+                            <!-- Form -->
+                            <form class="mb-32" action="verify-code" method="POST">
+
+                                <input type="hidden" name="mobile" value="<%= mobile %>">
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <input tabindex="0" class="form-control code-input" name="code" id="code" placeholder="--- ---"
+                                        pattern="^\d{3} - \d{3}$" required>
+                                </div>
+                                <!-- Submit -->
+                                <button class="btn primary full-width" type="submit" onclick="this.disabled=disabled">
+                                    Send
+                                </button>
+                            </form>
+
+                </div>
+            </div> <!-- / .row -->
+        </div>
+        <script src="/assets/js/imask.js"></script>
+        <script>
+            const codeInput = document.getElementById('code')
+
+            codeInput.addEventListener('focus', () => {
+                codeInput.classList.add('touched')
+            })
+
+            var codeMask = IMask(
+                codeInput, {
+                mask: '000 - 000'
+            });
+
+        </script>
+    </body>
+
+</html>

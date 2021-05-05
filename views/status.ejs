@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <div class="container d-flex flex-column" style="margin-top: 70px;">
+            <div class="row align-items-center justify-content-center no-gutters">
+                <div class="col-12 col-md-5 col-lg-4 py-8 py-md-11">
+
+                    <!-- Heading -->
+                    <h1 class="verify-code-text text-center">
+                        Connection Status
+                    </h1>
+
+
+
+                    <%if (varibles.error) { %>
+                        <div class="m-b-20 m-t-20  alert danger">
+                            <%= varibles.error%>
+                        </div>
+                        <% } %>
+
+                            <%if (varibles.loginby==='trial' ) { %>
+                                <div class="m-b-20 m-t-20 alert info">Welcome trial user!</div>
+                                <% } %>
+
+
+                                    <%if (varibles.loginby==='mac' ) { %>
+                                        <div class="m-b-20 m-t-20 alert info">Welcome
+                                            <%= varibles.mac %>
+                                        </div>
+                                        <% } %>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>IP address:</td>
+                                                                <td>
+                                                                    <%= varibles.ip %>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>bytes up/down</td>
+                                                                <td>
+                                                                    <%= (varibles.bytesinnice || 0) +' / '+ (varibles.bytesoutnice || 0) %>
+                                                                </td>
+                                                            </tr>
+                                                            <% if (varibles.sessiontimeleft) { %>
+                                                                <tr>
+                                                                    <td>connected / left:</td>
+                                                                    <td>
+                                                                        <% varibles.uptime +' / '+ varibles.sessiontimeleft %>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <% } else { %>
+
+                                                                    <tr>
+                                                                        <td>connected:</td>
+                                                                        <td>
+                                                                            <% varibles.uptime %>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <% } %>
+
+
+                                                                        <%if (varibles.refreshtimeout ) { %>
+                                                                            <tr>
+                                                                                <td>status refresh</td>
+                                                                                <td>
+                                                                                    <% varibles.refreshtimeout %>
+                                                                                </td>
+                                                                            <tr>
+                                                                                <% } %>
+
+                                                        </tbody>
+                                                    </table>
+
+
+                                                    <div class="panel-footer">
+                                                        <a class="btn primary full-width"  href="http://hotspot.view.sy/logout?erase-cookie=true" >Logout</a>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            
+
+                </div>
+
+        
+            </div> <!-- / .row -->
+        </div>
+
+
+
+    </body>
+
+</html>
