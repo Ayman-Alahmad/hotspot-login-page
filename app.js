@@ -48,7 +48,7 @@ app.post('/code', (req, res) => {
     // validation mobile 
     const regex = new RegExp(config.patterns.mobile)
     if (!regex.test(mobile))
-        return res.render('mobile/login', { error: 'invalid mobile number 1', varibles })
+        return res.render('mobile/login', { error: 'invalid mobile number.', varibles })
 
     // send code via sms
     axios
@@ -65,7 +65,7 @@ app.post('/code', (req, res) => {
         })
         .catch(error => {
             // render code input page
-            return res.render('mobile/login', { error: 'invalid mobile number 2', varibles })
+            return res.render('mobile/login', { error: error, varibles })
         })
 
 })
