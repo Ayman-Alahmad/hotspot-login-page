@@ -23,10 +23,38 @@
                         </div>
                         <% } %>
 
+                        <%if (varibles.error) { %>
+                            <div class="m-b-20 m-t-20  alert danger">
+                                <%= varibles.error%>
+                            </div>
+                            <% } %>
+
                             <!-- Form -->
-                            <form class="mb-32" action="verify-code" method="POST">
+                            <form class="mb-32"    action="code" method="POST">
 
                                 <input type="hidden" name="mobile" value="<%= mobile %>">
+
+                                <input type="hidden" name="mac" value="<%= varibles.mac %>">
+                                <input type="hidden" name="ip" value="<%= varibles.ip %>">
+                                <input type="hidden" name="username" value="<%= varibles.username %>">
+                                <input type="hidden" name="link-login" value="<%= varibles.linkorig %>">
+                                <input type="hidden" name="link-orig" value="<%= varibles.linkorig %>">
+                                <input type="hidden" name="error" value="<%= varibles.error %>">
+                                <input type="hidden" name="trial" value="<%= varibles.trial %>">
+                                <input type="hidden" name="chap-id" value="<%= varibles.chapid %>">
+                                <input type="hidden" name="chap-challenge" value="<%= varibles.chapchallenge %>">
+                                <input type="hidden" name="link-login-only" value="<%= varibles.linkloginonly %>">
+                                <input type="hidden" name="link-orig-esc" value="<%= varibles.linkorigesc %>">
+                                <input type="hidden" name="mac-esc" value="<%= varibles.macesc %>">
+                                <input type="hidden" name="identity" value="<%= varibles.identity %>">
+                                <input type="hidden" name="bytes-in-nice" value="<%= varibles.bytesinnice %>">
+                                <input type="hidden" name="bytes-out-nice" value="<%= varibles.bytesoutnice %>">
+                                <input type="hidden" name="session-time-left" value="<%= varibles.sessiontimeleft %>">
+                                <input type="hidden" name="uptime" value="<%= varibles.uptime %>">
+                                <input type="hidden" name="refresh-timeout" value="<%= varibles.refreshtimeout %>">
+                                <input type="hidden" name="link-status" value="<%= varibles.linkstatus %>">
+                                <input type="hidden" name="server-address" value="<%= varibles.server_address %>">
+                                <input type="hidden" name="server-name" value="<%= varibles.server_name %>">
 
                                 <!-- Email -->
                                 <div class="form-group">

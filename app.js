@@ -6,6 +6,8 @@ const config = require('./config');
 const data = require('./data');
 const MikrotikVariables = require('./mikrotik')
 
+const axios = require('axios')
+
 
 const app = express();
 
@@ -49,24 +51,42 @@ app.post('/code', (req, res) => {
         return res.render('mobile/login', { error: 'invalid mobile number', varibles })
 
     // send code via sms
-    // missing-----------------------------------------------------------------------
+    axios
+        .post('http://188.247.31.134:3000/sms/create-user', {
+            mac: varibles.mac,
+            mobile,
+            ip: varibles.ip,
+            server_address: varibles.server_address
+        })
+        .then(data => {
+            // render code input page
+            varibles.username = data.username
+            res.render('mobile/code', { mobile, error: null, varibles })
+        })
+        .catch(error => {
+            // render code input page
+            return res.render('mobile/login', { error: 'invalid mobile number', varibles })
+        })
 
-    // render code input page
-    res.render('mobile/code', { mobile, error: null })
 })
 
 
 app.post('/verify-code', (req, res) => {
     const { mobile, code } = req.body
+    const varibles = new MikrotikVariables(req.body)
+
     // validation mobile 
     const regex = new RegExp(config.patterns.mobile)
     if (!regex.test(mobile))
-        return res.render('mobile/login', { error: 'invalid mobile number' })
+        return res.render('mobile/login', { error: 'invalid mobile number', varibles })
 
     // validation mobile 
     const code_regex = new RegExp(config.patterns.code)
     if (!code_regex.test(code))
         return res.render('mobile/code', { mobile, error: 'Invalid code' })
+    // do login to wifi with username and password(code)
+    res.render('mobile/verify-code', { mobile, code, error: null, varibles })
+
 })
 
 
